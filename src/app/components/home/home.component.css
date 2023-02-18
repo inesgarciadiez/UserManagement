@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    justify-content: space-between;
+}
+
+.button {
+    margin-right: 20;
+    border-style: none;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--valor);
+}
+
+/* .row  */
+article {
+    width: calc(33.333% - var(--valor));
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10%;
+    padding: 1%;
+    margin: 1%;
+    box-shadow: 1px 1px10px var(--color);
+}
+
+article.rojo {
+    background-color: lightcoral;
+}
+
+article.beige {
+    background-color: beige;
+}
+
+article.bold {
+    font-weight: bold;
+}
+
+article.cursive {
+    font-style: italic;
+}
