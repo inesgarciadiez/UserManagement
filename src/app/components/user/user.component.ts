@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -7,24 +8,22 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
 
-  allUsers: User[] = [];
+  userProfile: User | any;
+
+  constructor(private activateRoute: ActivatedRoute,
+    private userServices: UsersService) {
+  }
 
   ngOnInit(): void {
     //necesito llamar al servicio para traer un listado de alumnos.
-    this.allUsers = this.usersService.getAllUsers()
-    console.log(this.allUsers);
-    this.getUser();
-  }
+    this.activateRoute.params.subscribe((params: any) => {
+      let url = params.name;
+      this.userProfile = this.userServices.getByUrl(url);
 
-  getUser() {
-    this.usersService.getPositionUser();
-  }
-
-  constructor(private usersService: UsersService) {
-
-
+      console.log(params);
+    })
   }
 
 }

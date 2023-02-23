@@ -17,8 +17,7 @@ export class UsersService {
     return this.allUsers;
   }
 
-  getPositionUser(): any {
-    console.log(this.allUsers.at(1)?.name);
-    return this.allUsers.at(1)?.name;
+  getByUrl(pUrl: string): User | any {
+    return this.allUsers.find(users => users.url === pUrl);
   }
 }

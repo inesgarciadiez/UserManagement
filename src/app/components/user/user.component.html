@@ -4,15 +4,15 @@
             alt="" class="user-photo">
     </div>
     <div class="line"></div>
-    <div class="info" [ngSwitch]="allUsers.length">
+    <div class="info">
 
-        <p class="user-name" *ngSwitchCase="0">{{ getUser() }}</p>
+        <p class="user-name">Username</p>
         <p class="user-name">Surname</p>
         <p class="user-name">Username: username</p>
         <p class="user-name">Email: email.gmail</p>
 
         <div class="all-butons">
-            <button type="button" class="btn btn-outline-secondary" (click)="getUser()">Delete</button>
+            <button type="button" class="btn btn-outline-secondary">Delete</button>
             <button type="button" class="btn btn-outline-secondary">Update</button>
             <button type="button" class="btn btn-outline-secondary">Back</button>
         </div>
