@@ -8,18 +8,13 @@
     justify-content: space-between;
 }
 
-.button {
+button {
     margin-right: 20;
     border-style: none;
     padding: 10px;
     background-color: rgb(255, 255, 255);
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--valor);
-}
 
 /* .row  */
 article {
@@ -28,22 +23,17 @@ article {
     border: 1px solid black;
     border-radius: 10%;
     padding: 1%;
-    margin: 1%;
+    margin: 2%;
     box-shadow: 1px 1px10px var(--color);
 }
 
-article.rojo {
-    background-color: lightcoral;
+.user-photo {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: auto;
 }
 
-article.beige {
-    background-color: beige;
-}
-
-article.bold {
-    font-weight: bold;
-}
-
-article.cursive {
-    font-style: italic;
+.user-name {
+    text-align: center;
 }

@@ -1,0 +1,26 @@
+.line {
+    border-right: 1px solid black;
+    height: 400px;
+    margin: 30px;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+}
+
+.user-photo {
+    width: 400px;
+    height: 400px;
+    padding: 5%;
+    margin: 5%;
+}
+
+.info {
+    padding: 5%;
+}
+
+.all-butons {
+    display: flex;
+    margin-top: 10px;
+}

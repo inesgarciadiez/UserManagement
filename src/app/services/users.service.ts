@@ -16,4 +16,9 @@ export class UsersService {
   getAllUsers(): User[] {
     return this.allUsers;
   }
+
+  getPositionUser(): any {
+    console.log(this.allUsers.at(1)?.name);
+    return this.allUsers.at(1)?.name;
+  }
 }
