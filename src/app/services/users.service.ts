@@ -18,6 +18,7 @@ export class UsersService {
   }
 
   getByUrl(pUrl: string): User | any {
-    return this.allUsers.find(users => users.url === pUrl);
+    console.log(pUrl);
+    return this.allUsers.find(users => users.name === pUrl);
   }
 }

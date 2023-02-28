@@ -19,10 +19,8 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     //necesito llamar al servicio para traer un listado de alumnos.
     this.activateRoute.params.subscribe((params: any) => {
-      let url = params.name;
+      let url = params.url;
       this.userProfile = this.userServices.getByUrl(url);
-
-      console.log(params);
     })
   }
 
