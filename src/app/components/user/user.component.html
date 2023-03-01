@@ -1,6 +1,6 @@
 <div class="profile">
     <div>
-        <img [src]='userProfile.photo' alt="" class="user-photo">
+        <img [src]='userProfile.photo' alt="" class="rounded-circle mx-auto img-fluid">
     </div>
     <div class="line"></div>
     <div class="info">
@@ -11,9 +11,11 @@
         <p class="user-name">Email: {{ userProfile.email}}</p>
 
         <div class="all-butons">
-            <button type="button" class="btn btn-outline-secondary">Delete</button>
-            <button type="button" class="btn btn-outline-secondary">Update</button>
-            <button type="button" class="btn btn-outline-secondary">Back</button>
+            <button type="button" class="btn btn-outline-secondary"
+                [routerLink]="['/alert', userProfile.name]">Delete</button>
+            <button type="button" class="btn btn-outline-secondary"
+                [routerLink]="['/form', userProfile.name]">Update</button>
+            <button type="button" class="btn btn-outline-secondary" [routerLink]="['/home']">Back</button>
         </div>
     </div>
 </div>

@@ -22,6 +22,7 @@ export class UserComponent implements OnInit {
       let url = params.url;
       this.userProfile = this.userServices.getByUrl(url);
     })
+
   }
 
 }
