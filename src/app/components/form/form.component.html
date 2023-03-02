@@ -1,13 +1,13 @@
 <!-- {{ formModel.valid }}
  -->
-<section class="container">
+<section class="container vh-100">
 
     <h3>NEW USER</h3>
 
     <hr>
 
     <form [formGroup]="formModel" (ngSubmit)="getDataForm()">
-        <div class="my-2">
+        <div class="my-2 ">
             <label class="form-label" for="username">Username (*)</label>
             <input class="form-control" id="username" type="text" formControlName="username">
             <p class="error" *ngIf="checkControl('username', 'required')">El campo es requerido</p>
@@ -33,7 +33,10 @@
             <p class="error" *ngIf="checkControl('photo', 'required')">El campo es requerido</p>
         </div>
 
-        <input type="submit" value="Send" class="btn btn-danger" [disabled]="!formModel.valid">
+        <input type="submit" value="Send" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            [disabled]="!formModel.valid">
+
+        <app-alert></app-alert>
 
     </form>
 </section>

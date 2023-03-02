@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
-import { UpdatesService } from 'src/app/services/updates.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-form',
@@ -15,7 +15,7 @@ export class FormComponent {
 
   formModel: FormGroup;
 
-  constructor(private updateServices: UpdatesService,
+  constructor(private userServices: UsersService,
     private activateRoute: ActivatedRoute,
     private router: Router) {
     this.formModel = new FormGroup({
@@ -39,32 +39,19 @@ export class FormComponent {
     //Capturamos el id de la ruta con activateRoute
     //hacemos una consulta al servicio con id, obtenemos los datos de un usuario
 
-    this.activateRoute.params.subscribe((params: any) => {
-      let url = params.url;
-      this.user = this.updateServices.getByUrl(url);
+    this.activateRoute.params.subscribe(async (params: any) => {
+      let id: string = params.userid;
+      let response: any = await this.userServices.getById(id);
+      this.user = response
+      console.log(this.user)
     })
-
-    /*     this.activateRoute.params.subscribe((params: any) => {
-          let id = Number(params.id);
-          console.log(params.id);
-    
-          let response = this.updateServices.getById(id);
-          if (response) {
-            this.user = response;
-            console.log(this.user)
-          }
-          else {
-            alert('Este cliente no existe');
-            this.router.navigate(['/home']);
-          }
-        }) */
 
     const user1 = {
       id: 8,
-      username: this.user.name,
-      surname: this.user.surname,
+      username: this.user.first_name,
+      surname: this.user.last_name,
       email: this.user.email,
-      photo: this.user.photo,
+      photo: this.user.image,
     }
 
     this.formModel = new FormGroup({

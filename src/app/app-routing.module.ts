@@ -10,10 +10,10 @@ import { UserComponent } from './components/user/user.component';
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: 'home', component: HomeComponent },
-    { path: 'user/:url', component: UserComponent },
+    { path: 'user/:userid', component: UserComponent },
     /*     { path: 'form', component: FormComponent }, */
-    { path: 'form/:url', component: FormComponent },
-    { path: 'alert', component: AlertComponent },
+    { path: 'form/:userid', component: FormComponent },
+    { path: 'alert/:userid', component: AlertComponent },
     { path: '**', component: C404Component },
     /* { path: '', pathMatch: 'full', component: HomeComponent } */
 ];

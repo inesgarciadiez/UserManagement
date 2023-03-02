@@ -10,7 +10,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UserComponent implements OnInit {
 
-  userProfile: User | any;
+  userProfile!: User | any;
 
   constructor(private activateRoute: ActivatedRoute,
     private userServices: UsersService) {
@@ -18,9 +18,10 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     //necesito llamar al servicio para traer un listado de alumnos.
-    this.activateRoute.params.subscribe((params: any) => {
-      let url = params.url;
-      this.userProfile = this.userServices.getByUrl(url);
+    this.activateRoute.params.subscribe(async (params: any) => {
+      let id: string = params.userid;
+      let response: any = await this.userServices.getById(id);
+      this.userProfile = response
     })
 
   }

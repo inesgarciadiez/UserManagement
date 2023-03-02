@@ -1,21 +1,22 @@
-<div class="profile">
-    <div>
-        <img [src]='userProfile.photo' alt="" class="rounded-circle mx-auto img-fluid">
-    </div>
-    <div class="line"></div>
-    <div class="info">
+<section class="container mt-3">
+    <div class=" card p-3">
+        <div class="d-flex">
+            <img [src]='userProfile?.image' alt="" class="rounded-circle mx-auto img-fluid">
+            <div class="line"></div>
+            <div class="col-md-6 mx-auto justify-content-center">
 
-        <p class="user-name"> {{ userProfile.name }}</p>
-        <p class="user-name">{{ userProfile.surname }} </p>
-        <p class="user-name">Username: {{ userProfile.name }}</p>
-        <p class="user-name">Email: {{ userProfile.email}}</p>
+                <p class="user-name"> {{ userProfile?.first_name }}</p>
+                <p class="user-name">{{ userProfile?.last_name }} </p>
+                <p class="user-name">Username: {{ userProfile?.first_name }}</p>
+                <p class="user-name">Email: {{ userProfile?.email}}</p>
 
-        <div class="all-butons">
-            <button type="button" class="btn btn-outline-secondary"
-                [routerLink]="['/alert', userProfile.name]">Delete</button>
-            <button type="button" class="btn btn-outline-secondary"
-                [routerLink]="['/form', userProfile.name]">Update</button>
-            <button type="button" class="btn btn-outline-secondary" [routerLink]="['/home']">Back</button>
+                <div class="all-butons">
+                    <button type="button" class="btn btn-outline-secondary"
+                        [routerLink]="['/alert', userProfile?._id]">Delete</button>
+                    <button type="button" class="btn btn-outline-secondary" [routerLink]="['/form']">Update</button>
+                    <button type="button" class="btn btn-outline-secondary" [routerLink]="['/home']">Back</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>

@@ -11,6 +11,7 @@ import { UserComponent } from './components/user/user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { C404Component } from './components/c404/c404.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AlertComponent } from './components/alert/alert.component';
     UserComponent,
     HeaderComponent,
     C404Component,
-    AlertComponent
+    AlertComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,

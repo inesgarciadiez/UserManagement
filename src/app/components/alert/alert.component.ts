@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { User } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'app-alert',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AlertComponent {
 
+  @Input() deleteUser!: User;
 }

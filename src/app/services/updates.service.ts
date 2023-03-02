@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { USERS } from '../db/users.db';
 import { User } from '../interfaces/user.interface';
 
 @Injectable({
@@ -7,7 +6,6 @@ import { User } from '../interfaces/user.interface';
 })
 export class UpdatesService {
 
-  private allUsers: User[] = USERS;
 
   constructor() { }
 
@@ -15,11 +13,4 @@ export class UpdatesService {
       return this.allUsers.find(users => users.id === pId);
     } */
 
-  getAllUsers(): User[] {
-    return this.allUsers;
-  }
-
-  getByUrl(pUrl: string): User | any {
-    return this.allUsers.find(users => users.name === pUrl);
-  }
 }
