@@ -1,7 +1,17 @@
 <section class="container mt-3">
-    <div class="row g-3" *ngIf="allUsers.length > 0">
+    <div class="row g-4">
         <article *ngFor="let user of allUsers" class="col-12 col-md-6 col-xl-4">
             <app-user-card [miUser]="user"></app-user-card>
         </article>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-between">
+                <li class="page-item"><button class="page-link bg-dark text-white" (click)="gotoPage(currentPage - 1)"
+                        [disabled]="currentPage === 1"><i class="fa-solid fa-arrow-left"></i></button></li>
+                <li class="page-item"><button class="page-link bg-dark text-white" (click)="gotoPage(currentPage + 1)"
+                        [disabled]="currentPage === totalPages"><i class="fa-solid fa-arrow-right"></i></button></li>
+            </ul>
+        </nav>
+
     </div>
 </section>

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
@@ -12,6 +13,10 @@ import { UsersService } from 'src/app/services/users.service';
 export class FormComponent {
 
   user: User | any;
+  title: string = 'Register'
+  status: string = "registered"
+  msg: string = "";
+  type: string = "";
 
   formModel: FormGroup;
 
@@ -19,17 +24,17 @@ export class FormComponent {
     private activateRoute: ActivatedRoute,
     private router: Router) {
     this.formModel = new FormGroup({
-      username: new FormControl("", [
+      first_name: new FormControl("", [
         Validators.required
       ]),
-      surname: new FormControl("", [
+      last_name: new FormControl("", [
         Validators.required
       ]),
       email: new FormControl("", [
         Validators.required,
         Validators.pattern(/^\S+\@\S+\.[com,es]/)
       ]),
-      photo: new FormControl("", [
+      image: new FormControl("", [
         Validators.required
       ]),
     })
@@ -41,37 +46,52 @@ export class FormComponent {
 
     this.activateRoute.params.subscribe(async (params: any) => {
       let id: string = params.userid;
-      let response: any = await this.userServices.getById(id);
-      this.user = response
-      console.log(this.user)
+      if (id) {
+        this.title = 'Update';
+        this.status = "updated";
+        let response: any = await this.userServices.getById(id);
+        const user: User = response
+
+        this.formModel = new FormGroup({
+          first_name: new FormControl(user?.first_name, [
+            Validators.required
+          ]),
+          last_name: new FormControl(user?.last_name, [
+            Validators.required
+          ]),
+          email: new FormControl(user?.email, [
+            Validators.required,
+            Validators.pattern(/^\S+\@\S+\.[com,es]/)
+          ]),
+          image: new FormControl(user?.image, [
+            Validators.required
+          ]),
+        })
+      }
     })
 
-    const user1 = {
-      id: 8,
-      username: this.user.first_name,
-      surname: this.user.last_name,
-      email: this.user.email,
-      photo: this.user.image,
-    }
-
-    this.formModel = new FormGroup({
-      username: new FormControl(user1.username, [
-        Validators.required
-      ]),
-      surname: new FormControl(user1.surname, [
-        Validators.required
-      ]),
-      email: new FormControl(user1.email, [
-        Validators.required,
-        Validators.pattern(/^\S+\@\S+\.[com,es]/)
-      ]),
-      photo: new FormControl(user1.photo, [
-        Validators.required
-      ]),
-    })
   }
-  getDataForm() {
-    console.log(this.formModel.value);
+
+  async getDataForm() {
+    let user: User = this.formModel.value;
+
+    if (user.id) {
+      let response = await this.userServices.update(user);
+    }
+    else {
+      try {
+        let response = await this.userServices.create(user);
+        if (response.id) {
+          Swal.fire(
+            `The user ${response.first_name} with id ${response.id} has successfully ${this.status}`
+          )
+          this.router.navigate(['/home']);
+        }
+      }
+      catch (err) {
+        console.log(err)
+      }
+    }
   }
 
   checkControl(pControlName: string, pError: string): boolean {

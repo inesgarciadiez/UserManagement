@@ -10,17 +10,27 @@ import { UsersService } from 'src/app/services/users.service';
 export class HomeComponent implements OnInit {
 
   allUsers: User[] = [];
-
-  async ngOnInit(): Promise<void> {
-    //necesito llamar al servicio para traer un listado de users.
-    //let response = await this.usersService.getAll()
-    let response = await this.usersService.getAll()
-    this.allUsers = response.results
-    console.log(this.allUsers)
-  }
+  currentPage: number = 1;
+  totalPages: number = 1;
 
   constructor(private usersService: UsersService) {
 
+  }
+
+  ngOnInit(): void {
+    this.gotoPage();
+  }
+
+  async gotoPage(pNum: number = 1): Promise<void> {
+    try {
+      let response = await this.usersService.getAll(pNum)
+      this.currentPage = response.page
+      this.allUsers = response.results
+      this.totalPages = response.total_pages
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 
 }

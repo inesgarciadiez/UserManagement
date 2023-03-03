@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: 'home', component: HomeComponent },
     { path: 'user/:userid', component: UserComponent },
-    /*     { path: 'form', component: FormComponent }, */
+    { path: 'new', component: FormComponent },
     { path: 'form/:userid', component: FormComponent },
     { path: 'alert/:userid', component: AlertComponent },
     { path: '**', component: C404Component },

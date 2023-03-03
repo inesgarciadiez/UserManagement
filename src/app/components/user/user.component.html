@@ -1,22 +1,26 @@
 <section class="container mt-3">
     <div class=" card p-3">
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
             <img [src]='userProfile?.image' alt="" class="rounded-circle mx-auto img-fluid">
-            <div class="line"></div>
-            <div class="col-md-6 mx-auto justify-content-center">
+            <div class="d-flex" style="height: 400px;">
+                <div class="vr"></div>
+            </div>
+            <div class="mx-auto justify-content-center">
 
-                <p class="user-name"> {{ userProfile?.first_name }}</p>
-                <p class="user-name">{{ userProfile?.last_name }} </p>
-                <p class="user-name">Username: {{ userProfile?.first_name }}</p>
-                <p class="user-name">Email: {{ userProfile?.email}}</p>
+                <h4 class="p-3"> {{ userProfile?.first_name }}</h4>
+                <h4 class="p-3">{{ userProfile?.last_name }} </h4>
+                <p class="p-3"><strong>Username:</strong> {{ userProfile?.first_name }}</p>
+                <p class="p-3"><strong>Email:</strong> {{ userProfile?.email}}</p>
 
-                <div class="all-butons">
+                <div class="all-butons p-3">
+                    <button type="button" class="btn btn-outline-secondary" (click)="delete()">Delete</button>
                     <button type="button" class="btn btn-outline-secondary"
-                        [routerLink]="['/alert', userProfile?._id]">Delete</button>
-                    <button type="button" class="btn btn-outline-secondary" [routerLink]="['/form']">Update</button>
+                        [routerLink]="['/form', userProfile?._id]">Update</button>
                     <button type="button" class="btn btn-outline-secondary" [routerLink]="['/home']">Back</button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- <app-alert [deleteUser]="userProfile"></app-alert> -->
+
 </section>
