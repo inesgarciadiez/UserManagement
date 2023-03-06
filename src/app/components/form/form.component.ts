@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
 
   user: User | any;
   title: string = 'Register'
@@ -82,6 +82,7 @@ export class FormComponent {
       try {
         let response = await this.userServices.create(user);
         if (response.id) {
+          console.log(response)
           Swal.fire(
             `The user ${response.first_name} with id ${response.id} has successfully ${this.status}`
           )

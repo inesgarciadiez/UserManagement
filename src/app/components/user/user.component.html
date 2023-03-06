@@ -1,5 +1,5 @@
-<section class="container mt-3">
-    <div class=" card p-3">
+<section class="container mt-4 vh-100">
+    <div class="card p-3">
         <div class="d-flex align-items-center">
             <img [src]='userProfile?.image' alt="" class="rounded-circle mx-auto img-fluid">
             <div class="d-flex" style="height: 400px;">
@@ -13,7 +13,8 @@
                 <p class="p-3"><strong>Email:</strong> {{ userProfile?.email}}</p>
 
                 <div class="all-butons p-3">
-                    <button type="button" class="btn btn-outline-secondary" (click)="delete()">Delete</button>
+                    <button type="button" class="btn btn-outline-secondary" (click)="delete(userProfile._id)"
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
                     <button type="button" class="btn btn-outline-secondary"
                         [routerLink]="['/form', userProfile?._id]">Update</button>
                     <button type="button" class="btn btn-outline-secondary" [routerLink]="['/home']">Back</button>
@@ -21,6 +22,4 @@
             </div>
         </div>
     </div>
-    <!-- <app-alert [deleteUser]="userProfile"></app-alert> -->
-
 </section>

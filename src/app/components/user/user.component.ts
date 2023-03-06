@@ -27,21 +27,27 @@ export class UserComponent implements OnInit {
 
   }
 
-  delete() {
-    Swal.fire({
-      title: 'Do you want to delete the user ' + this.userProfile.first_name + ' ' + this.userProfile.last_name + '?',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'The user ' + this.userProfile.first_name + ' ' + this.userProfile.last_name + ' has been deleted.'
-        )
-        this.router.navigate(['/home'])
-      }
-    })
+  async delete(userId: string | undefined): Promise<void> {
+    if (userId !== undefined) {
+      let response = await this.userServices.delete(userId);
+      this.userProfile = response
+      console.log(response)
+
+      Swal.fire({
+        title: 'Do you want to delete the user ' + this.userProfile.first_name + ' ' + this.userProfile.last_name + '?',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'The user ' + this.userProfile.first_name + ' ' + this.userProfile.last_name + '  has been deleted.'
+          )
+          this.router.navigate(['/home'])
+        }
+      })
+    }
   }
 
 }

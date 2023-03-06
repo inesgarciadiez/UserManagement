@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
-import { AlertComponent } from './components/alert/alert.component';
 import { C404Component } from './components/c404/c404.component';
 import { FormComponent } from './components/form/form.component';
 import { HomeComponent } from './components/home/home.component';
@@ -13,7 +12,6 @@ const routes: Routes = [
     { path: 'user/:userid', component: UserComponent },
     { path: 'new', component: FormComponent },
     { path: 'form/:userid', component: FormComponent },
-    { path: 'alert/:userid', component: AlertComponent },
     { path: '**', component: C404Component },
     /* { path: '', pathMatch: 'full', component: HomeComponent } */
 ];
